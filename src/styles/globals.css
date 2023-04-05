@@ -60,6 +60,9 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0!important;
+  }
   .viewbox-desc {
     -webkit-line-clamp: 2!important;
   }

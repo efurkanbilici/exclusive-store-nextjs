@@ -11,7 +11,7 @@ export const ProductsSkeleton = ({ numbers = 9 }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense grid-rows-auto gap-x-3 gap-y-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense grid-rows-auto gap-5">
       {items.map((_, index) => (
         <div
           className="grid grid-cols-3 grid-rows-1 gap-3 h-[135px] p-3 product-view"

@@ -1,7 +1,7 @@
 import useSwr from "swr";
+import { useEffect } from "react";
 import { fetcher } from "@/lib/utils";
 import View from "@/components/itemView";
-import { useEffect } from "react";
 import { ProductsSkeleton } from "@/components/skeleton";
 
 export default function Products() {
@@ -25,7 +25,10 @@ export default function Products() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense grid-rows-auto gap-x-3 gap-y-4 py-2">
+    <div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense grid-rows-auto gap-5 py-2"
+      id="products"
+    >
       {data.map(({ id, image, title, description }) => (
         <View key={id} imgSrc={image} title={title} desc={description} />
       ))}

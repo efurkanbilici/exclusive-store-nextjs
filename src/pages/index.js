@@ -9,7 +9,14 @@ export default function Home() {
       <Head>
         <title>Homepage | Next.js Basket System</title>
       </Head>
-      <Section>
+      <Section
+        title="Latest Products"
+        description="We respond to the demands of our customers with our innovative and high quality products. You can visit our page to meet our innovative and high quality products in line with the latest trends."
+        actionButton={{
+          label: "View Products",
+          url: "/#products",
+        }}
+      >
         <Products />
       </Section>
     </Fragment>

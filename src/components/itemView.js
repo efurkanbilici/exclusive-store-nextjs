@@ -32,7 +32,7 @@ export default function ItemView({ imgSrc, title, desc }) {
             startIcon={<AddIcon />}
             className="flex-1 basis-0 bg-[#1976d2] whitespace-nowrap"
           >
-            Add To Basket
+            Add Item
           </Button>
           <Button size="small">See details</Button>
         </div>

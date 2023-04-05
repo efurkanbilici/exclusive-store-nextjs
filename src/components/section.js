@@ -16,14 +16,14 @@ export default function Section({
             <h2 className="text-2xl md:text-3xl font-bold text-slate-950 py-2 dark:dark:text-white/75">
               {title}
             </h2>
-            <p className="text-gray-600 text-[15px] md:text-base max-w-xl text-center dark:text-slate-400">
+            <p className="text-gray-600 text-[15px] md:text-base max-w-xl text-center dark:text-slate-400 pb-4">
               {description}
             </p>
             {actionButton && (
               <Button
                 variant="contained"
                 href={actionButton?.url}
-                className="mt-4 scroll-m-14"
+                className="scroll-m-14"
               >
                 {actionButton?.label}
               </Button>

@@ -54,8 +54,15 @@ button {
 
 .viewbox-desc {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  line-height: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .viewbox-desc {
+    -webkit-line-clamp: 2!important;
+  }
 }
 
 .MuiBadge-colorPrimary {

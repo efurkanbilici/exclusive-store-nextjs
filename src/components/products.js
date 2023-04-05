@@ -29,9 +29,19 @@ export default function Products() {
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense grid-rows-auto gap-5 py-2"
       id="products"
     >
-      {data.map(({ id, image, title, description }) => (
-        <View key={id} imgSrc={image} title={title} desc={description} />
-      ))}
+      {data.map(
+        ({ id, image, title, description, rating, price, category }) => (
+          <View
+            key={id}
+            imgSrc={image}
+            title={title}
+            desc={description}
+            rating={rating}
+            price={price}
+            category={category}
+          />
+        )
+      )}
     </div>
   );
 }

@@ -22,12 +22,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  *::selection {
+    background-color: rgba(219,234,254,.06);
+  }
   .custom-scrollbar::-webkit-scrollbar-track {
     border-radius: 0;
     @apply bg-slate-900;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply border-slate-900;
+  }
+  .MuiChip-colorDefault {
+    @apply text-gray-400;
   }
 }
 

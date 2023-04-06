@@ -32,8 +32,9 @@
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply border-slate-900;
   }
+  .MuiChip-root,
   .MuiChip-colorDefault {
-    @apply text-gray-400;
+    color: #9ca3af!important;
   }
 }
 
@@ -76,4 +77,8 @@ button {
 
 .MuiBadge-colorPrimary {
   @apply bg-blue-200 text-blue-950 border border-blue-950;
+}
+
+div[data-rmiz-content] {
+  @apply flex items-center justify-center;
 }

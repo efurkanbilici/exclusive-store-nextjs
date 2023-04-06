@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/AddShoppingCart";
 import Chip from "@mui/material/Chip";
@@ -14,6 +15,7 @@ export default function ItemView({
   rating,
   category,
   price,
+  productId,
 }) {
   const darkMode = useDarkMode();
 
@@ -36,7 +38,7 @@ export default function ItemView({
           sizes="(max-width: 768px) 10vw,
               (max-width: 1200px) 12vw,
               14vw"
-          priority
+          priority={false}
           fill
         />
       </div>
@@ -75,9 +77,11 @@ export default function ItemView({
           >
             Add Item
           </Button>
-          <Button size="small" className="w-full md:w-max">
-            See details
-          </Button>
+          <Link href={`/item/${productId}`}>
+            <Button size="small" className="w-full md:w-max">
+              See details
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
@@ -91,4 +95,5 @@ ItemView.propTypes = {
   rating: PropTypes.object.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  productId: PropTypes.number.isRequired,
 };

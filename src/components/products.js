@@ -39,6 +39,7 @@ export default function Products() {
             rating={rating}
             price={price}
             category={category}
+            productId={id}
           />
         )
       )}

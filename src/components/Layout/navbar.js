@@ -27,7 +27,10 @@ export default function Navbar() {
   return (
     <Fragment>
       <div className="fixed top-0 left-0 w-full h-14 bg-blue-800 border-b dark:border-slate-700 shadow z-50">
-        <div className="flex items-center justify-between h-full gap-4 max-w-7xl px-4 pr-[33px] mx-auto">
+        <div
+          className="flex items-center justify-between h-full gap-4 max-w-7xl px-4 pr-[33px] mx-auto"
+          data-site-navbar={true}
+        >
           <IconButton aria-label="menu">
             <MenuIcon className="text-white/80" />
           </IconButton>

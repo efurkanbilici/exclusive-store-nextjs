@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import store from "@/store";
+import { addNewItem } from "@/store/basketSlice";
+import toast from "react-hot-toast";
 
 export const fetcher = async (url) => {
   const res = await fetch(url);
@@ -22,4 +25,14 @@ export const useDarkMode = () => {
   }, []);
 
   return dark;
+};
+
+export const handleAddItem = ({ productId, amount }) => {
+  store.dispatch(
+    addNewItem({
+      productId,
+      amount,
+    })
+  );
+  toast.success("Item added successfully!");
 };

@@ -1,3 +1,5 @@
+import "react-medium-image-zoom/dist/styles.css";
+
 import { Fragment, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,9 +9,8 @@ import Chip from "@mui/joy/Chip";
 import Rating from "@mui/material/Rating";
 import BackIcon from "@mui/icons-material/ArrowBack";
 import ImageZoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
 import { styled } from "@mui/material";
-import { useDarkMode } from "@/lib/utils";
+import { handleAddItem, useDarkMode } from "@/lib/utils";
 
 export default function ProductPage({ data }) {
   const darkMode = useDarkMode();
@@ -87,7 +88,17 @@ export default function ProductPage({ data }) {
               </h4>
             </div>
             <div className="mt-auto pt-6">
-              <Button color="primary" size="lg" className="bg-blue-500 w-full">
+              <Button
+                color="primary"
+                size="lg"
+                className="bg-blue-500 w-full"
+                onClick={() =>
+                  handleAddItem({
+                    productId: data.id,
+                    amount: 1,
+                  })
+                }
+              >
                 Add To Basket
               </Button>
             </div>

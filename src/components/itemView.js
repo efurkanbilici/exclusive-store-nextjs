@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/AddShoppingCart";
 import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material";
-import { useDarkMode } from "@/lib/utils";
+import { handleAddItem, useDarkMode } from "@/lib/utils";
 
 export default function ItemView({
   imgSrc,
@@ -74,6 +74,12 @@ export default function ItemView({
             variant="contained"
             startIcon={<AddIcon />}
             className="flex-1 basis-0 bg-[#1976d2] whitespace-nowrap w-full md:w-max"
+            onClick={() =>
+              handleAddItem({
+                productId,
+                amount: 1,
+              })
+            }
           >
             Add Item
           </Button>

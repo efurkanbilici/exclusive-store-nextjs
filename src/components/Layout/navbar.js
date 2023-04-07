@@ -42,7 +42,7 @@ export default function Navbar() {
             className={`${headingFont.className} text-white font-bold text-2xl select-none px-2 inline-flex items-center justify-center h-full`}
             translate="no"
           >
-            Exclusive Store
+            {process.env.NEXT_PUBLIC_APP_NAME}
           </Link>
           <Tooltip title="Basket">
             <IconButton aria-label="menu" onClick={() => setIsBasketOpen(true)}>

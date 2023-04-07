@@ -10,23 +10,30 @@ export const basketSlice = createSlice({
   reducers: {
     addNewItem: ({ items }, { payload }) => {
       const { productId, amount } = payload;
-      const getRelated = items.filter(({ itemId }) => itemId === productId);
+      const itemIndex = items.findIndex((item) => item.itemId === productId);
 
-      if (getRelated.length === 0) {
-        items.push({ itemId: productId, count: 1 });
+      if (itemIndex === -1) {
+        items.push({ itemId: productId, count: amount });
       } else {
-        let refObj = getRelated[0];
-        refObj.count += amount;
-        const withoutCurrItem = items.filter(
-          ({ itemId }) => itemId !== productId
-        );
+        items[itemIndex].count += amount;
+      }
+    },
+    updateItemCount: ({ items }, { payload }) => {
+      const { productId, amount, type } = payload;
+      const itemIndex = items.findIndex((item) => item.itemId === productId);
 
-        items = [...withoutCurrItem, refObj];
+      if (itemIndex === -1) {
+        items.push({
+          itemId: productId,
+          count: amount,
+        });
+      } else {
+        items[itemIndex].count += type === 1 ? -amount : amount;
       }
     },
   },
 });
 
-export const { addNewItem } = basketSlice.actions;
+export const { addNewItem, updateItemCount } = basketSlice.actions;
 
 export default basketSlice.reducer;

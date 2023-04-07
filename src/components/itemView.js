@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
 import Link from "next/link";
+import { handleAddItem, useDarkMode } from "@/lib/utils";
+
 import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/AddShoppingCart";
 import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material";
-import { handleAddItem, useDarkMode } from "@/lib/utils";
+import AddIcon from "@mui/icons-material/AddShoppingCart";
 
 export default function ItemView({
   imgSrc,

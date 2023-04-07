@@ -1,20 +1,32 @@
 import "react-medium-image-zoom/dist/styles.css";
 
 import { Fragment, useEffect } from "react";
+import { handleAddItem, useDarkMode } from "@/lib/utils";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+
+import { RWebShare } from "react-web-share";
+import Fab from "@mui/material/Fab";
 import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import Rating from "@mui/material/Rating";
 import BackIcon from "@mui/icons-material/ArrowBack";
 import ImageZoom from "react-medium-image-zoom";
 import { styled } from "@mui/material";
-import { handleAddItem, useDarkMode } from "@/lib/utils";
+import ShareIcon from "@mui/icons-material/IosShare";
 
 export default function ProductPage({ data }) {
   const darkMode = useDarkMode();
-  const { title, image: imageUrl, description, rating, price, category } = data;
+  const {
+    title,
+    image: imageUrl,
+    description,
+    rating,
+    price,
+    category,
+    id,
+  } = data;
 
   useEffect(() => {
     const navbar = document.querySelector("[data-site-navbar]");
@@ -26,6 +38,12 @@ export default function ProductPage({ data }) {
     classList.remove("overflow-y-hidden");
     classList.add("overflow-y-auto");
   }, []);
+
+  const shareConfig = {
+    text: `Check out this item if found in the ${process.env.NEXT_PUBLIC_APP_NAME}: ${title}`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/item/${id}`,
+    title: "Share this product",
+  };
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconEmpty": {
@@ -52,7 +70,7 @@ export default function ProductPage({ data }) {
           </Chip>
         </div>
         <div className="flex flex-col md:flex-row gap-4 border p-6 rounded overflow-hidden border-slate-300 dark:border-slate-500">
-          <div className="py-4 px-6 border border-blue-400 border-2 rounded-lg basis-6/12 min-w-[280px] dark:border-blue-300/60">
+          <div className="py-4 px-6 border border-blue-400 border-2 rounded-lg basis-6/12 min-w-[280px] dark:border-blue-300/60 flex flex-col items-center justify-center">
             <ImageZoom>
               <Image
                 src={imageUrl}
@@ -105,6 +123,12 @@ export default function ProductPage({ data }) {
           </div>
         </div>
       </div>
+      <RWebShare data={shareConfig}>
+        <Fab variant="extended" className="fixed bottom-8 right-8">
+          <ShareIcon sx={{ mr: 1 }} />
+          Share
+        </Fab>
+      </RWebShare>
     </Fragment>
   );
 }

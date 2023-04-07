@@ -21,22 +21,36 @@ export const basketSlice = createSlice({
         existingItem.totalPrice = existingItem.count * price;
       }
     },
-    updateItemCount: ({ items }, { payload }) => {
+    updateItemCount: (state, { payload }) => {
       const { productId, amount, type } = payload;
-      const itemIndex = items.findIndex((item) => item.itemId === productId);
+      const itemIndex = state.items.findIndex(
+        (item) => item.itemId === productId
+      );
 
       if (itemIndex === -1) {
-        items.push({
+        state.items.push({
           itemId: productId,
           count: amount,
         });
       } else {
-        items[itemIndex].count += type === 1 ? -amount : amount;
+        const updateItem = state.items[itemIndex];
+
+        if (type === 1 && updateItem.count === 1) {
+          state.items = state.items.filter((item) => item.itemId !== productId);
+        } else {
+          updateItem.count += type === 1 ? -amount : amount;
+          updateItem.totalPrice = updateItem.count * updateItem.price;
+        }
       }
+    },
+    deleteItem: (state, { payload }) => {
+      state.items = state.items.filter(
+        (item) => item.itemId !== payload.productId
+      );
     },
   },
 });
 
-export const { addNewItem, updateItemCount } = basketSlice.actions;
+export const { addNewItem, updateItemCount, deleteItem } = basketSlice.actions;
 
 export default basketSlice.reducer;

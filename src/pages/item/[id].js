@@ -110,7 +110,7 @@ export default function ProductPage({ data }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const API_URL = "https://fakestoreapi.com/products/";
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/products/`;
   const itemId = Number(params.id);
 
   if (!itemId) {

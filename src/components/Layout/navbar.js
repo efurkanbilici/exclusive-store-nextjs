@@ -12,6 +12,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import BasketIcon from "@mui/icons-material/ShoppingBasket";
 import NoItemIcon from "@mui/icons-material/RemoveShoppingCart";
+import { useSelector } from "react-redux";
+import BasketContent from "@/components/basketContent";
 
 const headingFont = Lora({
   subsets: ["latin"],
@@ -23,6 +25,7 @@ const monoFont = Roboto_Mono({
 
 export default function Navbar() {
   const [isBasketOpen, setIsBasketOpen] = useState(false);
+  const { items } = useSelector((state) => state.basket);
 
   return (
     <Fragment>
@@ -43,7 +46,7 @@ export default function Navbar() {
           </Link>
           <Tooltip title="Basket">
             <IconButton aria-label="menu" onClick={() => setIsBasketOpen(true)}>
-              <Badge badgeContent={0} color="primary">
+              <Badge badgeContent={items.length} color="primary">
                 <BasketIcon className="text-white/80" />
               </Badge>
             </IconButton>
@@ -66,10 +69,14 @@ export default function Navbar() {
               <CloseIcon className="text-black/90" />
             </IconButton>
           </div>
-          <div className="flex items-center justify-center flex-col min-h-20 gap-3 py-4 text-gray-400">
-            <NoItemIcon />
-            <h4 className="text-center text-xs">There are no products</h4>
-          </div>
+          {items.length === 0 ? (
+            <div className="flex items-center justify-center flex-col min-h-20 gap-3 py-4 text-gray-400">
+              <NoItemIcon />
+              <h4 className="text-center text-xs">There are no products</h4>
+            </div>
+          ) : (
+            <BasketContent items={items} />
+          )}
         </Box>
       </Drawer>
     </Fragment>

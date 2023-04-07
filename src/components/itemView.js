@@ -47,7 +47,7 @@ export default function ItemView({
           <h3 className="font-bold text-xl leading-5 h-max py-1 text-slate-700 dark:text-slate-300 tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">
             {title}
           </h3>
-          <p className="text-slate-500 dark:text-slate-500 text-xs hidden overflow-hidden text-ellipsis viewbox-desc">
+          <p className="text-slate-500 dark:text-slate-500 text-xs hidden overflow-hidden text-ellipsis mt-2 viewbox-desc">
             {desc}
           </p>
         </div>

@@ -5,7 +5,10 @@ import View from "@/components/itemView";
 import { ProductsSkeleton } from "@/components/skeleton";
 
 export default function Products() {
-  const { data, error } = useSwr("https://fakestoreapi.com/products", fetcher);
+  const { data, error } = useSwr(
+    `${process.env.NEXT_PUBLIC_API_URL}/products`,
+    fetcher
+  );
 
   useEffect(() => {
     if (!data && !error) {

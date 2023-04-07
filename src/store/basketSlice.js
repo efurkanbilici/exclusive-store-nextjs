@@ -9,13 +9,16 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addNewItem: ({ items }, { payload }) => {
-      const { productId, amount } = payload;
+      const { productId, amount, title, price } = payload;
       const itemIndex = items.findIndex((item) => item.itemId === productId);
 
       if (itemIndex === -1) {
-        items.push({ itemId: productId, count: amount });
+        items.push({ itemId: productId, count: amount, title, price });
       } else {
-        items[itemIndex].count += amount;
+        const existingItem = items[itemIndex];
+
+        existingItem.count += amount;
+        existingItem.totalPrice = existingItem.count * price;
       }
     },
     updateItemCount: ({ items }, { payload }) => {

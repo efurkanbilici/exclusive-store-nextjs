@@ -79,6 +79,8 @@ export default function ItemView({
               handleAddItem({
                 productId,
                 amount: 1,
+                title,
+                price,
               })
             }
           >

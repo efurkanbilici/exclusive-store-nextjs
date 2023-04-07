@@ -15,6 +15,7 @@ import BackIcon from "@mui/icons-material/ArrowBack";
 import ImageZoom from "react-medium-image-zoom";
 import { styled } from "@mui/material";
 import ShareIcon from "@mui/icons-material/IosShare";
+import { useSelector } from "react-redux";
 
 export default function ProductPage({ data }) {
   const darkMode = useDarkMode();
@@ -27,6 +28,9 @@ export default function ProductPage({ data }) {
     category,
     id,
   } = data;
+
+  const { items } = useSelector((state) => state.basket);
+  console.log(items);
 
   useEffect(() => {
     const navbar = document.querySelector("[data-site-navbar]");
@@ -114,6 +118,8 @@ export default function ProductPage({ data }) {
                   handleAddItem({
                     productId: data.id,
                     amount: 1,
+                    title,
+                    price,
                   })
                 }
               >
@@ -123,12 +129,14 @@ export default function ProductPage({ data }) {
           </div>
         </div>
       </div>
-      <RWebShare data={shareConfig}>
-        <Fab variant="extended" className="fixed bottom-8 right-8">
-          <ShareIcon sx={{ mr: 1 }} />
-          Share
-        </Fab>
-      </RWebShare>
+      <div className="flex items-center justify-center w-full">
+        <RWebShare data={shareConfig}>
+          <Fab variant="extended">
+            <ShareIcon sx={{ mr: 1 }} />
+            Share
+          </Fab>
+        </RWebShare>
+      </div>
     </Fragment>
   );
 }

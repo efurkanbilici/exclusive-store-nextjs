@@ -1,0 +1,13 @@
+{
+  "ADD_ITEM": "Add",
+  "SEE_DETAILS": "See details",
+  "ALL_PRODUCTS": "All Products",
+  "SHARE_ITEM": "Share",
+  "ADD_ACTION_SUCCESS": "Item added successfully!",
+  "ADD_TO_BASKET": "Add to Basket",
+  "SINGLE_PRODUCT_PRICE": "Single Price",
+  "TOTAL_PRODUCT_PRICE": "Total Price",
+  "CHECKOUT_LABEL": "Checkout",
+  "DELETE_ITEM_LABEL": "Delete",
+  "SHIPPING_COST_LABEL": "Shipping Cost"
+}

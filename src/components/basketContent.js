@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import { Divider } from "@mui/joy";
 import JoyUiButton from "@mui/joy/Button";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { useTranslation } from "next-i18next";
 
 export default function BasketContent({ items }) {
   const totalPrice = items.reduce((acc, val) => {
@@ -19,6 +20,8 @@ export default function BasketContent({ items }) {
   const handleCheckout = () => {
     alert("going to stripe..");
   };
+
+  const { t } = useTranslation("common");
 
   return (
     <Fragment>
@@ -38,11 +41,11 @@ export default function BasketContent({ items }) {
                 </h4>
                 <div className="py-2">
                   <span className="block text-xs text-slate-500 mb-1 leading-3">
-                    Single Price: <b>{price}$</b>
+                    {`${t("SINGLE_PRODUCT_PRICE")}:`} <b>{price}$</b>
                   </span>
                   {count > 1 && (
                     <span className="block text-xs text-slate-500 mb-1 leading-3">
-                      Total Price: <b>{totalPrice}$</b>
+                      {`${t("TOTAL_PRODUCT_PRICE")}:`} <b>{totalPrice}$</b>
                     </span>
                   )}
                 </div>
@@ -95,17 +98,18 @@ export default function BasketContent({ items }) {
                   );
                 }}
               >
-                Delete
+                {t("DELETE_ITEM_LABEL")}
               </Button>
             </div>
           </div>
         ))}
       </Stack>
-      <Divider className="my-4">Checkout</Divider>
+      <Divider className="my-4">{t("CHECKOUT_LABEL")}</Divider>
       <div className="py-1 px-3 text-xs">
-        <div className="pb-2">Shipping cost: 5$</div>
+        <div className="pb-2">{`${t("SHIPPING_COST_LABEL")}:`} 5$</div>
         <div className="pb-2">
-          Total Price: <b className="text-blue-700">{totalPrice + 5}$</b>
+          {`${t("TOTAL_PRODUCT_PRICE")}:`}{" "}
+          <b className="text-blue-700">{totalPrice + 5}$</b>
         </div>
         <JoyUiButton
           variant="soft"
@@ -113,7 +117,7 @@ export default function BasketContent({ items }) {
           className="w-full bg-black text-white hover:text-blue-950 mt-2"
           onClick={handleCheckout}
         >
-          Checkout
+          {t("CHECKOUT_LABEL")}
         </JoyUiButton>
       </div>
     </Fragment>

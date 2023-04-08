@@ -8,6 +8,7 @@ import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddShoppingCart";
+import { useTranslation } from "next-i18next";
 
 export default function ItemView({
   imgSrc,
@@ -19,6 +20,7 @@ export default function ItemView({
   productId,
 }) {
   const darkMode = useDarkMode();
+  const { t } = useTranslation("common");
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-decimal": {
@@ -81,14 +83,15 @@ export default function ItemView({
                 amount: 1,
                 title,
                 price,
+                responseMsg: t("ADD_ACTION_SUCCESS"),
               })
             }
           >
-            Add Item
+            {t("ADD_ITEM")}
           </Button>
           <Link href={`/item/${productId}`}>
             <Button size="small" className="w-full md:w-max">
-              See details
+              {t("SEE_DETAILS")}
             </Button>
           </Link>
         </div>

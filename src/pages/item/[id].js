@@ -15,7 +15,8 @@ import BackIcon from "@mui/icons-material/ArrowBack";
 import ImageZoom from "react-medium-image-zoom";
 import { styled } from "@mui/material";
 import ShareIcon from "@mui/icons-material/IosShare";
-import { useSelector } from "react-redux";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function ProductPage({ data }) {
   const darkMode = useDarkMode();
@@ -29,8 +30,7 @@ export default function ProductPage({ data }) {
     id,
   } = data;
 
-  const { items } = useSelector((state) => state.basket);
-  console.log(items);
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     const navbar = document.querySelector("[data-site-navbar]");
@@ -67,7 +67,7 @@ export default function ProductPage({ data }) {
             className="text-[14px] inline-flex items-center justify-start gap-2 text-blue-700 leading-4 tracking-tight dark:text-blue-400"
           >
             <BackIcon className="text-[14px]" />
-            <span className="underline">All Products</span>
+            <span className="underline">{t("ALL_PRODUCTS")}</span>
           </Link>
           <Chip color="neutral" size="sm" variant="outlined">
             {category}
@@ -120,10 +120,11 @@ export default function ProductPage({ data }) {
                     amount: 1,
                     title,
                     price,
+                    responseMsg: t("ADD_ACTION_SUCCESS"),
                   })
                 }
               >
-                Add To Basket
+                {t("ADD_TO_BASKET")}
               </Button>
             </div>
           </div>
@@ -133,7 +134,7 @@ export default function ProductPage({ data }) {
         <RWebShare data={shareConfig}>
           <Fab variant="extended">
             <ShareIcon sx={{ mr: 1 }} />
-            Share
+            {t("SHARE_ITEM")}
           </Fab>
         </RWebShare>
       </div>
@@ -141,7 +142,7 @@ export default function ProductPage({ data }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, locale }) {
   const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/products/`;
   const itemId = Number(params.id);
 
@@ -158,6 +159,7 @@ export async function getServerSideProps({ params }) {
     return {
       props: {
         data,
+        ...(await serverSideTranslations(locale ?? "en", ["common", "basket"])),
       },
     };
   } catch (error) {

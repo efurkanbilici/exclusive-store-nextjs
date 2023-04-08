@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 
 export default function Section({
   children,
@@ -20,13 +21,11 @@ export default function Section({
               {description}
             </p>
             {actionButton && (
-              <Button
-                variant="contained"
-                href={actionButton?.url}
-                className="scroll-m-14"
-              >
-                {actionButton?.label}
-              </Button>
+              <Link href="/#products">
+                <Button variant="contained" className="scroll-m-14">
+                  {actionButton?.label}
+                </Button>
+              </Link>
             )}
           </div>
         )}

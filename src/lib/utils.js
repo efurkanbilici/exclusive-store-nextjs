@@ -27,7 +27,13 @@ export const useDarkMode = () => {
   return dark;
 };
 
-export const handleAddItem = ({ productId, amount, title, price }) => {
+export const handleAddItem = ({
+  productId,
+  amount,
+  title,
+  price,
+  responseMsg = "Item added successfully!",
+}) => {
   store.dispatch(
     addNewItem({
       productId,
@@ -36,5 +42,5 @@ export const handleAddItem = ({ productId, amount, title, price }) => {
       price,
     })
   );
-  toast.success("Item added successfully!");
+  toast.success(responseMsg);
 };

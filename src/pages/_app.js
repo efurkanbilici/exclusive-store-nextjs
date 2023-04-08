@@ -4,8 +4,9 @@ import Layout from "@/components/Layout";
 import { Provider } from "react-redux";
 import store from "@/store";
 import { Toaster } from "react-hot-toast";
+import { appWithTranslation } from "next-i18next";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <ProgressBar
@@ -21,3 +22,5 @@ export default function App({ Component, pageProps }) {
     </Provider>
   );
 }
+
+export default appWithTranslation(App);

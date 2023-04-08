@@ -1,0 +1,13 @@
+{
+  "ADD_ITEM": "Ekle",
+  "SEE_DETAILS": "Detayları Gör",
+  "ALL_PRODUCTS": "Diğer Ürünler",
+  "SHARE_ITEM": "Paylaş",
+  "ADD_ACTION_SUCCESS": "Başarıyla sepete eklendi!",
+  "ADD_TO_BASKET": "Sepete Ekle",
+  "SINGLE_PRODUCT_PRICE": "Tekli Ücret",
+  "TOTAL_PRODUCT_PRICE": "Toplam Ücret",
+  "CHECKOUT_LABEL": "Kasa",
+  "DELETE_ITEM_LABEL": "Kaldır",
+  "SHIPPING_COST_LABEL": "Kargo Bedeli"
+}

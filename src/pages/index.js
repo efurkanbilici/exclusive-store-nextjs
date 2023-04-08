@@ -2,8 +2,12 @@ import { Fragment, useEffect } from "react";
 import Head from "next/head";
 import Section from "@/components/section";
 import Products from "@/components/products";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Home() {
+  const { t } = useTranslation("home");
+
   useEffect(() => {
     const navbar = document.querySelector("[data-site-navbar]");
     navbar.style.maxWidth = "80rem";
@@ -12,13 +16,13 @@ export default function Home() {
   return (
     <Fragment>
       <Head>
-        <title>Homepage | Next.js Basket System</title>
+        <title>{t("DOC_TITLE")} | Next.js Basket System</title>
       </Head>
       <Section
-        title="Latest Products"
-        description="We respond to the demands of our customers with our innovative and high quality products. You can visit our page to meet our innovative and high quality products in line with the latest trends."
+        title={t("HERO_SEC_TITLE")}
+        description={t("HERO_SEC_DESCRIPTION")}
         actionButton={{
-          label: "View Products",
+          label: t("HERO_SEC_BTN"),
           url: "/#products",
         }}
       >
@@ -26,4 +30,16 @@ export default function Home() {
       </Section>
     </Fragment>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", [
+        "common",
+        "home",
+        "basket",
+      ])),
+    },
+  };
 }
